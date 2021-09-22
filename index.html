@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <title>Tabuleiro</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="images/icons/icon.jpg">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+    <script type="text/JavaScript"> //Blocking clipboard (copy: https://stackoverflow.com/questions/40417885/copy-paste-prevent-js-code-without-disable-input-search-field-element)
+        function killCopy(e){
+            return false
+        }
+        function reEnable(){
+            return true
+        }
+        document.onselectstart=new Function ("return false")
+        if (window.sidebar){
+            document.onmousedown=killCopy
+            document.onclick=reEnable
+        }
+    </script>
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Tabuleiro</a>
+        <a class="nav-link" href="regras.html">Regras</a>
+        <a class="nav-link" href="sobre.html">Sobre</a>
+    </nav>
+    <br>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <div class="card">
+                    <div class="card-body">
+                    <h4 class="card-title">Tabuleiro</h4>
+                    <p class="card-text">Uma máquina do tempo caiu nas mãos de um criminoso, que está atacando os matemáticos em diversos pontos da história.<br>
+                        O governo mundial ofereceu um grande prêmio para os quatro matemáticos corajosos capazes de reverter essa catástrofe.<br>
+                        O que ninguém imaginava é que surgiria uma grande disputa pelo prêmio, mostre que é digno, salve o mundo e receba o grande prêmio.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                <h4 class="card-title">Player Roxo</h4>
+                                <h5 id="timer1">Timer: 15:00</h5>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-primary" onclick="timer(1)">Play</button>
+                                    <button type="button" class="btn btn-warning" onclick="stopAll(1)">Pause</button>
+                                    <button type="button" class="btn btn-danger" onclick="reset(1)">Reset</button>
+                                </div>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                <h4 class="card-title">Player Verde</h4>
+                                <h5 id="timer2">Timer: 15:00</h5>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-primary" onclick="timer(2)">Play</button>
+                                    <button type="button" class="btn btn-warning" onclick="stopAll(2)">Pause</button>
+                                    <button type="button" class="btn btn-danger" onclick="reset(2)">Reset</button>
+                                </div>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                <h4 class="card-title">Player Vermelho</h4>
+                                <h5 id="timer3">Timer: 15:00</h5>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-primary" onclick="timer(3)">Play</button>
+                                    <button type="button" class="btn btn-warning" onclick="stopAll(3)">Pause</button>
+                                    <button type="button" class="btn btn-danger" onclick="reset(3)">Reset</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                <h4 class="card-title">Player Amarelo</h4>
+                                <h5 id="timer4">Timer: 15:00</h5>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-primary" onclick="timer(4)">Play</button>
+                                    <button type="button" class="btn btn-warning" onclick="stopAll(4)">Pause</button>
+                                    <button type="button" class="btn btn-danger" onclick="reset(4)">Reset</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <button type="button" class="btn btn-success" onclick="randomCard()">Pegar Carta</button>
+                    <button type="button" class="btn btn-primary" onclick="rolldice()">Rolar Dado</button>
+                </div>
+            </div>
+            <br>
+            <div class="col-xl">
+                <div class="card">
+                    <div class="card tabulas">
+                        <img class="card-img tabuleiro" src="images/Tabuleiro.jpg" alt="">
+                    </div>
+                    <div style="position: absolute;height:60px; width:60px; border:1px solid aliceblue; background:grey; border-radius: 20%; padding: 5px;">
+                        <img id="player_one" class="player y">
+                        <img id="player_two" class="player r">
+                        <img id="player_three" class="player g">
+                        <img id="player_four" class="player b">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="JS_codes/timer.js"></script>
+    <script src="JS_codes/rollDice.js"></script>
+    <script src="JS_codes/movePlayer.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
